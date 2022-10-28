@@ -11,25 +11,11 @@ const createMarkUp = galleryItems.map(({preview, original, description}) => {
         }).join("");
 
 galletyRefs.innerHTML = createMarkUp;
-galletyRefs.addEventListener('click', modalOpen);
-document.addEventListener('keydown', modalClose)
 
-                
-function modalOpen (evt) {
-                evt.preventDefault();
-                if(evt.target.nodeName !== 'IMG') {
-                return
-                }
-                
-                new SimpleLightbox(".gallery a", {
-                    captionsData: "alt",
-                    captionDelay: 250,
-                  });
-}
+new SimpleLightbox(".gallery a", {
+captionsData: "alt",
+captionDelay: 250,
+});
 
 
-function modalClose (evt) {
-    if (evt.code === 'Escape') {
-    showImage.close()
-}
-}
+
