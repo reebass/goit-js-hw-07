@@ -18,7 +18,7 @@ const createMarkUp = galleryItems.map(({preview, original, description}) => {
 
 galletyRefs.innerHTML = createMarkUp;
 galletyRefs.addEventListener('click', modalOpen);
-document.addEventListener('keydown', modalClose)
+
 
 
 function modalOpen (evt) {
@@ -28,12 +28,14 @@ function modalOpen (evt) {
                 }
                 showImage = basicLightbox.create(`<img src="${evt.target.dataset.source}">`)
                 showImage.show()
+                document.addEventListener('keydown', modalClose)
 }
 
 
 function modalClose (evt) {
     if (evt.code === 'Escape') {
     showImage.close()
+    document.removeEventListener('keydown', modalClose)
 }
 }
 
